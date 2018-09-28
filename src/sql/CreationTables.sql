@@ -105,8 +105,3 @@ nomChirurgie VARCHAR(100),
 CONSTRAINT ordChirurgie_ordonnance_fk FOREIGN KEY (numOrd) REFERENCES ordonnance(numOrd),
 CONSTRAINT ordonnanceChirurgie_pk PRIMARY KEY (numOrd,rang)
 );
-
-
-
-
-

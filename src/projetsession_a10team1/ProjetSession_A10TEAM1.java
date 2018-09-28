@@ -5,6 +5,8 @@
  */
 package projetsession_a10team1;
 
+import dao.ConsultationDAO;
+
 /**
  *
  * @author 1895066
@@ -15,7 +17,9 @@ public class ProjetSession_A10TEAM1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ConsultationDAO cons= new ConsultationDAO();
+        
+        cons.nbConsulationParMois();
     }
     
 }
