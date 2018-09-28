@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-09-28 16:50:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entite.Ordonnance" table="ORDONNANCE" schema="A10TEAM1" optimistic-lock="version">
+        <id name="numord" type="string">
+            <column name="NUMORD" length="5" />
+            <generator class="assigned" />
+        </id>
+        <property name="recommandations" type="string">
+            <column name="RECOMMANDATIONS" length="1500" />
+        </property>
+        <property name="typeo" type="string">
+            <column name="TYPEO" length="12" />
+        </property>
+        <property name="datec" type="date">
+            <column name="DATEC" length="7" />
+        </property>
+        <set name="consultations" table="CONSULTATION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMORD" length="5" />
+            </key>
+            <one-to-many class="entite.Consultation" />
+        </set>
+        <set name="ordonnancechirurgies" table="ORDONNANCECHIRURGIE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMORD" length="5" not-null="true" />
+            </key>
+            <one-to-many class="entite.Ordonnancechirurgie" />
+        </set>
+        <set name="ordonnancemedicamentses" table="ORDONNANCEMEDICAMENTS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMORD" length="5" not-null="true" />
+            </key>
+            <one-to-many class="entite.Ordonnancemedicaments" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-09-28 16:50:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entite.Categories" table="CATEGORIES" schema="A10TEAM1" optimistic-lock="version">
+        <id name="idcategorie" type="string">
+            <column name="IDCATEGORIE" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="NOM" length="100" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" length="1500" />
+        </property>
+        <set name="medicaments" table="MEDICAMENT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCATEGORIE" length="3" />
+            </key>
+            <one-to-many class="entite.Medicament" />
+        </set>
+    </class>
+</hibernate-mapping>
